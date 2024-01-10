@@ -13,6 +13,7 @@ import com.xiyuan.project.mapper.UserMapper;
 import com.xiyuan.project.model.dto.user.UserQueryRequest;
 import com.xiyuan.project.model.entity.User;
 import com.xiyuan.project.model.enums.UserRoleEnum;
+import com.xiyuan.project.model.enums.UserStatusEnum;
 import com.xiyuan.project.model.vo.UserCredentialsVO;
 import com.xiyuan.project.model.vo.UserVO;
 import com.xiyuan.project.service.UserService;
@@ -107,6 +108,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (user == null) {
             log.info("user login failed, userAccount cannot match userPassword");
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户不存在或密码错误");
+        }
+        if (user.getStatus() == UserStatusEnum.DISABLE.getValue()) {
+            log.info("user login failed, userAccount cannot match userPassword");
+            throw new BusinessException(ErrorCode.NO_AUTH_ERROR, "该账户已禁用");
         }
         // 3. 记录用户的登录态
         request.getSession().setAttribute(UserConstant.USER_LOGIN_STATE, user);

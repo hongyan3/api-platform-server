@@ -79,7 +79,7 @@ public class InterfaceInfoServiceImpl extends ServiceImpl<InterfaceInfoMapper, I
         queryWrapper.eq(ObjectUtils.isNotEmpty(status),"status",status);
         queryWrapper.eq(ObjectUtils.isNotEmpty(method),"method",method);
         queryWrapper.eq(ObjectUtils.isNotEmpty(userId),"user_id",userId);
-        queryWrapper.eq("is_delete",false);
+        queryWrapper.eq("is_delete",1);
         queryWrapper.orderBy(SqlUtils.validSortField(sortField),
                 sortOrder.equals(CommonConstant.SORT_ORDER_ASC),sortField);
         return queryWrapper;
