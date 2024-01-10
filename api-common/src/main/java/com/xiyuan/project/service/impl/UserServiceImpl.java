@@ -98,7 +98,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "密码错误");
         }
         // 2. 加密
-        String encryptPassword = DigestUtil.sha256Hex((SALT + userPassword).getBytes());
+        String encryptPassword = EncryptPassword(userPassword);
         // 查询用户是否存在
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_account", userAccount);
@@ -137,7 +137,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     @Override
     public String EncryptPassword(String password) {
-        return DigestUtils.md5DigestAsHex((SALT + password).getBytes());
+        return DigestUtil.sha256Hex((SALT + password).getBytes());
     }
 
     @Override
