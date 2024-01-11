@@ -1,0 +1,18 @@
+server:
+  port: 8082
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - AddRequestHeader=source,gateway
+      routes:
+        - id: redirectInterfaceRequest
+          uri: http://127.0.0.1:8081
+          predicates:
+            - Path=/api/**
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: debug

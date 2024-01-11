@@ -1,10 +1,9 @@
-package com.xiyuan.project.model.dto.intrefaceinfo;
+package com.xiyuan.project.model.dto.interfaceinfo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.xiyuan.project.common.PageRequest;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,12 +14,7 @@ import java.io.Serializable;
  */
 @TableName(value ="interface_info")
 @Data
-public class InterfaceInfoQueryRequest extends PageRequest implements Serializable {
-    /**
-     * 接口ID
-     */
-    @TableId(type = IdType.ASSIGN_ID)
-    private Long id;
+public class InterfaceInfoAddRequest implements Serializable {
 
     /**
      * 接口名称
@@ -51,11 +45,6 @@ public class InterfaceInfoQueryRequest extends PageRequest implements Serializab
      * 响应头
      */
     private String responseHeader;
-
-    /**
-     * 状态 0-关闭 1-开启
-     */
-    private Integer status;
 
     /**
      * 请求方法

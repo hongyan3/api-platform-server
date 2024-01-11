@@ -2,9 +2,9 @@ package com.xiyuan.project.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xiyuan.project.model.dto.intrefaceinfo.InterfaceInfoQueryRequest;
-import com.xiyuan.project.model.entity.InterfaceInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xiyuan.project.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
+import com.xiyuan.project.model.entity.InterfaceInfo;
 import com.xiyuan.project.model.vo.InterfaceInfoVO;
 
 /**

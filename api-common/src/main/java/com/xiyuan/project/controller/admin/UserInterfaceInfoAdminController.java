@@ -7,14 +7,14 @@ import com.xiyuan.project.common.ErrorCode;
 import com.xiyuan.project.common.ResultUtils;
 import com.xiyuan.project.exception.BusinessException;
 import com.xiyuan.project.exception.ThrowUtils;
-import com.xiyuan.project.model.dto.interfaceinfo.InterfaceInfoAddRequest;
-import com.xiyuan.project.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
-import com.xiyuan.project.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
-import com.xiyuan.project.model.entity.InterfaceInfo;
+import com.xiyuan.project.model.dto.userinterfaceinfo.UserInterfaceInfoAddRequest;
+import com.xiyuan.project.model.dto.userinterfaceinfo.UserInterfaceInfoQueryRequest;
+import com.xiyuan.project.model.dto.userinterfaceinfo.UserInterfaceInfoUpdateRequest;
 import com.xiyuan.project.model.entity.User;
+import com.xiyuan.project.model.entity.UserInterfaceInfo;
 import com.xiyuan.project.model.enums.UserRoleEnum;
-import com.xiyuan.project.model.vo.InterfaceInfoVO;
-import com.xiyuan.project.service.InterfaceInfoService;
+import com.xiyuan.project.model.vo.UserInterfaceInfoVO;
+import com.xiyuan.project.service.UserInterfaceInfoService;
 import com.xiyuan.project.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
@@ -28,16 +28,16 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2024/1/8 16:32
  */
 @RestController
-@RequestMapping("/admin/interface_info")
-public class InterfaceInfoAdminController {
+@RequestMapping("/admin/user_interface_info")
+public class UserInterfaceInfoAdminController {
     @Resource
-    private InterfaceInfoService interfaceInfoService;
+    private UserInterfaceInfoService userUserInterfaceInfoService;
 
     @Resource
     private UserService userService;
 
     /**
-     * 新增(仅管理员)
+     * 新增接口(仅管理员)
      *
      * @param interfaceInfoAddRequest
      * @param request
@@ -45,19 +45,19 @@ public class InterfaceInfoAdminController {
      */
     @PostMapping
     @AuthCheck(AccessRole = UserRoleEnum.ADMIN)
-    public BaseResponse<Long> addInterfaceInfo(@RequestBody InterfaceInfoAddRequest interfaceInfoAddRequest, HttpServletRequest request) {
+    public BaseResponse<Long> addUserInterfaceInfo(@RequestBody UserInterfaceInfoAddRequest interfaceInfoAddRequest, HttpServletRequest request) {
         if (interfaceInfoAddRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
-        InterfaceInfo interfaceInfo = new InterfaceInfo();
+        UserInterfaceInfo interfaceInfo = new UserInterfaceInfo();
         BeanUtils.copyProperties(interfaceInfoAddRequest, interfaceInfo);
-        interfaceInfoService.validInterfaceInfo(interfaceInfo,true);
+        userUserInterfaceInfoService.validUserInterfaceInfo(interfaceInfo,true);
         User loginUser = userService.getLoginUser(request);
         interfaceInfo.setUserId(loginUser.getId());
-        boolean result = interfaceInfoService.save(interfaceInfo);
+        boolean result = userUserInterfaceInfoService.save(interfaceInfo);
         ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
-        long newInterfaceInfoId = interfaceInfo.getId();
-        return ResultUtils.success(newInterfaceInfoId);
+        long newUserInterfaceInfoId = interfaceInfo.getId();
+        return ResultUtils.success(newUserInterfaceInfoId);
     }
 
     /**
@@ -69,20 +69,20 @@ public class InterfaceInfoAdminController {
      */
     @DeleteMapping("/{interfaceId}")
     @AuthCheck(AccessRole = UserRoleEnum.ADMIN)
-    public BaseResponse<Boolean> deleteInterfaceInfo(HttpServletRequest request, @PathVariable Long interfaceId) {
+    public BaseResponse<Boolean> deleteUserInterfaceInfo(HttpServletRequest request, @PathVariable Long interfaceId) {
         if (interfaceId == null || interfaceId <= 0) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
         User user = userService.getLoginUser(request);
         long id = interfaceId;
         // 判断是否存在
-        InterfaceInfo oldInterfaceInfo = interfaceInfoService.getById(id);
-        ThrowUtils.throwIf(oldInterfaceInfo == null, ErrorCode.NOT_FOUND_ERROR);
+        UserInterfaceInfo oldUserInterfaceInfo = userUserInterfaceInfoService.getById(id);
+        ThrowUtils.throwIf(oldUserInterfaceInfo == null, ErrorCode.NOT_FOUND_ERROR);
         // 仅本人或管理员可删除
-        if (!oldInterfaceInfo.getUserId().equals(user.getId()) && !userService.isAdmin(request)) {
+        if (!oldUserInterfaceInfo.getUserId().equals(user.getId()) && !userService.isAdmin(request)) {
             throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
         }
-        boolean b = interfaceInfoService.removeById(id);
+        boolean b = userUserInterfaceInfoService.removeById(id);
         return ResultUtils.success(b);
     }
 
@@ -94,19 +94,19 @@ public class InterfaceInfoAdminController {
      */
     @PutMapping
     @AuthCheck(AccessRole = UserRoleEnum.ADMIN)
-    public BaseResponse<Boolean> updateInterfaceInfo(@RequestBody InterfaceInfoUpdateRequest interfaceInfoUpdateRequest) {
+    public BaseResponse<Boolean> updateUserInterfaceInfo(@RequestBody UserInterfaceInfoUpdateRequest interfaceInfoUpdateRequest) {
         if (interfaceInfoUpdateRequest == null || interfaceInfoUpdateRequest.getId() <= 0) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
-        InterfaceInfo interfaceInfo = new InterfaceInfo();
+        UserInterfaceInfo interfaceInfo = new UserInterfaceInfo();
         BeanUtils.copyProperties(interfaceInfoUpdateRequest, interfaceInfo);
         // 参数校验
-        interfaceInfoService.validInterfaceInfo(interfaceInfo,false);
+        userUserInterfaceInfoService.validUserInterfaceInfo(interfaceInfo,false);
         long id = interfaceInfoUpdateRequest.getId();
         // 判断是否存在
-        InterfaceInfo oldInterfaceInfo = interfaceInfoService.getById(id);
-        ThrowUtils.throwIf(oldInterfaceInfo == null, ErrorCode.NOT_FOUND_ERROR);
-        boolean result = interfaceInfoService.updateById(interfaceInfo);
+        UserInterfaceInfo oldUserInterfaceInfo = userUserInterfaceInfoService.getById(id);
+        ThrowUtils.throwIf(oldUserInterfaceInfo == null, ErrorCode.NOT_FOUND_ERROR);
+        boolean result = userUserInterfaceInfoService.updateById(interfaceInfo);
         return ResultUtils.success(result);
     }
     /**
@@ -118,14 +118,14 @@ public class InterfaceInfoAdminController {
      */
     @GetMapping
     @AuthCheck(AccessRole = UserRoleEnum.ADMIN)
-    public BaseResponse<Page<InterfaceInfoVO>> getInterfaceInfoList(@ModelAttribute InterfaceInfoQueryRequest interfaceInfoQueryRequest,
-                                                                         HttpServletRequest request) {
+    public BaseResponse<Page<UserInterfaceInfoVO>> getUserInterfaceInfoList(@ModelAttribute UserInterfaceInfoQueryRequest interfaceInfoQueryRequest,
+                                                                            HttpServletRequest request) {
         long current = interfaceInfoQueryRequest.getCurrent();
         long size = interfaceInfoQueryRequest.getPageSize();
         // 限制爬虫
         ThrowUtils.throwIf(size > 100, ErrorCode.PARAMS_ERROR);
-        Page<InterfaceInfo> interfaceInfoPage = interfaceInfoService.page(new Page<>(current, size),
-                interfaceInfoService.getQueryWrapper(interfaceInfoQueryRequest));
-        return ResultUtils.success(interfaceInfoService.getInterfaceInfoVOPage(interfaceInfoPage));
+        Page<UserInterfaceInfo> interfaceInfoPage = userUserInterfaceInfoService.page(new Page<>(current, size),
+                userUserInterfaceInfoService.getQueryWrapper(interfaceInfoQueryRequest));
+        return ResultUtils.success(userUserInterfaceInfoService.getUserInterfaceInfoVOPage(interfaceInfoPage));
     }
 }

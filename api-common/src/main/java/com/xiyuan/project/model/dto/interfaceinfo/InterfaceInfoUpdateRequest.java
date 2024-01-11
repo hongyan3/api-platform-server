@@ -1,8 +1,6 @@
-package com.xiyuan.project.model.dto.intrefaceinfo;
+package com.xiyuan.project.model.dto.interfaceinfo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -14,7 +12,7 @@ import java.io.Serializable;
  */
 @TableName(value ="interface_info")
 @Data
-public class InterfaceInfoEditRequest implements Serializable {
+public class InterfaceInfoUpdateRequest implements Serializable {
     /**
      * 接口ID
      */
@@ -59,6 +57,11 @@ public class InterfaceInfoEditRequest implements Serializable {
      * 请求方法
      */
     private String method;
+
+    /**
+     * 逻辑删除 0-删除 1-正常
+     */
+    private Integer isDelete;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

@@ -16,8 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 public class NameController {
 
     @GetMapping("/")
-    public String getNameByGet(String name) {
-        return "GET 你的名字是"+name;
+    public String getNameByGet(String name,HttpServletRequest request) {
+        String source = request.getHeader("source");
+        if (source == null || source.equals("")) {
+            return "请求来源不合法";
+        }
+        return "GET 你的名字是"+name+"请求来源："+source;
     }
 
     @PostMapping("/")

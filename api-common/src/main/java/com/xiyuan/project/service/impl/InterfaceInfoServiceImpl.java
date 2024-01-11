@@ -8,20 +8,17 @@ import com.xiyuan.project.common.ErrorCode;
 import com.xiyuan.project.constant.CommonConstant;
 import com.xiyuan.project.exception.BusinessException;
 import com.xiyuan.project.mapper.InterfaceInfoMapper;
-import com.xiyuan.project.model.dto.intrefaceinfo.InterfaceInfoQueryRequest;
+import com.xiyuan.project.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
 import com.xiyuan.project.model.entity.InterfaceInfo;
 import com.xiyuan.project.model.vo.InterfaceInfoVO;
 import com.xiyuan.project.service.InterfaceInfoService;
 import com.xiyuan.project.utils.SqlUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
