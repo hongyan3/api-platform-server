@@ -1,8 +1,9 @@
 package com.xiyuan.apigateway;
 
-import com.xiyuan.project.dubbo.ApiBackendService;
+import com.xiyuan.apicommon.model.entity.User;
+import com.xiyuan.apicommon.service.InnerInterfaceInfoService;
+import com.xiyuan.apicommon.service.InnerUserService;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class demo {
     @DubboReference
-    private ApiBackendService apiBackendService;
+    private InnerInterfaceInfoService innerInterfaceInfoService;
+    @DubboReference
+    private InnerUserService userService;
 
-    @GetMapping("/name")
-    public String demo1(@RequestParam("name") String name) {
-        return apiBackendService.getUserName(name);
+    @GetMapping("/user")
+    public User demo2(@RequestParam("userId")Long userId) {
+        return userService.getUserById(userId);
     }
 }

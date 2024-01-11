@@ -1,2 +1,2 @@
 # spring boot start
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.xiyuan.project.ApiClientConfig
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.xiyuan.apiclientsdk.ApiClientConfig

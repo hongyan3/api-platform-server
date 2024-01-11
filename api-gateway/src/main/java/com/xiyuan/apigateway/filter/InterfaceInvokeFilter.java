@@ -1,6 +1,12 @@
 package com.xiyuan.apigateway.filter;
 
+import com.xiyuan.apiclientsdk.utils.SignatureUtils;
+import com.xiyuan.apicommon.model.entity.User;
+import com.xiyuan.apicommon.service.InnerInterfaceInfoService;
+import com.xiyuan.apicommon.service.InnerUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.http.HttpHeaders;
@@ -17,7 +23,9 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class InterfaceInvokeFilter implements GlobalFilter {
+public class InterfaceInvokeFilter implements GatewayFilter {
+    @DubboReference
+    private InnerInterfaceInfoService innerInterfaceInfoService;
     private static final List<String> IP_WHITE_LIST = Collections.singletonList("127.0.0.1");
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -38,6 +46,32 @@ public class InterfaceInvokeFilter implements GlobalFilter {
         String timestamp = headers.getFirst("timestamp");
         String sign = headers.getFirst("sign");
         String body = headers.getFirst("body");
+
+        User invokeUser = null;
+        try {
+            invokeUser = innerInterfaceInfoService.getInvokeUser(accessKey);
+        } catch (Exception e) {
+            log.error("远程调用获取调用用户信息失败: {}",e.getMessage());
+        }
+        if (invokeUser == null) {
+            return handleNoAuth(response);
+        }
+        String secretKey = invokeUser.getSecretKey();
+        String serverSign = SignatureUtils.generateSignature(body, secretKey);
+        if (sign == null || !sign.equals(serverSign)) {
+            log.error("签名校验失败");
+            return handleNoAuth(response);
+        }
         return chain.filter(exchange);
+    }
+
+    /**
+     * 处理无权限调用异常
+     * @param response
+     * @return
+     */
+    private Mono<Void> handleNoAuth(ServerHttpResponse response) {
+        response.setStatusCode(HttpStatus.FORBIDDEN);
+        return response.setComplete();
     }
 }

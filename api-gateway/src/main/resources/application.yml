@@ -9,6 +9,6 @@ spring:
         server-addr: xiyuan.link:8848
 dubbo:
   scan:
-    base-packages: com.xiyuan.project
+    base-packages: com.xiyuan.apicommon.service
   registry:
     address: nacos://xiyuan.link:8848
