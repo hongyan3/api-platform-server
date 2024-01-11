@@ -1,18 +1,14 @@
 server:
   port: 8082
 spring:
+  application:
+    name: api-gateway
   cloud:
-    gateway:
-      default-filters:
-        - AddRequestHeader=source,gateway
-      routes:
-        - id: redirectInterfaceRequest
-          uri: http://127.0.0.1:8081
-          predicates:
-            - Path=/api/**
-logging:
-  level:
-    org:
-      springframework:
-        cloud:
-          gateway: debug
+    nacos:
+      discovery:
+        server-addr: xiyuan.link:8848
+dubbo:
+  scan:
+    base-packages: com.xiyuan.project
+  registry:
+    address: nacos://xiyuan.link:8848

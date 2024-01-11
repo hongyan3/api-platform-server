@@ -1,5 +1,5 @@
 server:
-  port:
+  port: 8080
   servlet:
     context-path: /api
     # cookie 30 天过期
@@ -7,6 +7,8 @@ server:
       cookie:
         max-age: 2592000
 spring:
+  application:
+    name: api-backend
 #  数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -32,6 +34,19 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    # nacos注册中心配置
+    nacos:
+      discovery:
+        server-addr: xiyuan.link:8848
+dubbo:
+  protocol:
+    port: -1
+    name: dubbo
+  registry:
+    address: nacos://xiyuan.link:8848
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
