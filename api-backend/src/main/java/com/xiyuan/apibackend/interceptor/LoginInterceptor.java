@@ -1,9 +1,9 @@
 package com.xiyuan.apibackend.interceptor;
 
-import com.xiyuan.apicommon.model.entity.User;
 import com.xiyuan.apibackend.common.ErrorCode;
 import com.xiyuan.apibackend.constant.UserConstant;
 import com.xiyuan.apibackend.exception.BusinessException;
+import com.xiyuan.apicommon.model.entity.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;

@@ -3,9 +3,9 @@ package com.xiyuan.apibackend.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiyuan.apibackend.model.dto.user.UserQueryRequest;
-import com.xiyuan.apicommon.model.entity.User;
 import com.xiyuan.apibackend.model.vo.UserCredentialsVO;
 import com.xiyuan.apibackend.model.vo.UserVO;
+import com.xiyuan.apicommon.model.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

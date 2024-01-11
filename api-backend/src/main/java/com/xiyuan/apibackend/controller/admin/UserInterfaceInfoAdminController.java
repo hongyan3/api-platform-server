@@ -1,21 +1,21 @@
 package com.xiyuan.apibackend.controller.admin;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xiyuan.apibackend.model.dto.userinterfaceinfo.UserInterfaceInfoAddRequest;
-import com.xiyuan.apibackend.model.dto.userinterfaceinfo.UserInterfaceInfoQueryRequest;
-import com.xiyuan.apibackend.model.dto.userinterfaceinfo.UserInterfaceInfoUpdateRequest;
 import com.xiyuan.apibackend.annotation.AuthCheck;
 import com.xiyuan.apibackend.common.BaseResponse;
 import com.xiyuan.apibackend.common.ErrorCode;
 import com.xiyuan.apibackend.common.ResultUtils;
 import com.xiyuan.apibackend.exception.BusinessException;
 import com.xiyuan.apibackend.exception.ThrowUtils;
-import com.xiyuan.apicommon.model.entity.User;
+import com.xiyuan.apibackend.model.dto.userinterfaceinfo.UserInterfaceInfoAddRequest;
+import com.xiyuan.apibackend.model.dto.userinterfaceinfo.UserInterfaceInfoQueryRequest;
+import com.xiyuan.apibackend.model.dto.userinterfaceinfo.UserInterfaceInfoUpdateRequest;
 import com.xiyuan.apibackend.model.entity.UserInterfaceInfo;
 import com.xiyuan.apibackend.model.enums.UserRoleEnum;
 import com.xiyuan.apibackend.model.vo.UserInterfaceInfoVO;
 import com.xiyuan.apibackend.service.UserInterfaceInfoService;
 import com.xiyuan.apibackend.service.UserService;
+import com.xiyuan.apicommon.model.entity.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 

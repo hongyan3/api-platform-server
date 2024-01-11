@@ -1,11 +1,11 @@
 package com.xiyuan.apibackend.interceptor;
 
 import com.xiyuan.apibackend.annotation.AuthCheck;
-import com.xiyuan.apicommon.model.entity.User;
-import com.xiyuan.apibackend.model.enums.UserRoleEnum;
 import com.xiyuan.apibackend.common.ErrorCode;
 import com.xiyuan.apibackend.exception.BusinessException;
+import com.xiyuan.apibackend.model.enums.UserRoleEnum;
 import com.xiyuan.apibackend.service.UserService;
+import com.xiyuan.apicommon.model.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
