@@ -19,6 +19,6 @@ public class NameController {
     @PostMapping
     public String getNameByPost(@RequestBody User user,HttpServletRequest request) {
         String source = request.getHeader("resource");
-        return "GET 你的名字是: "+user.getUserName()+" 请求来源: "+source;
+        return "POST 你的名字是: "+user.getUserName()+" 请求来源: "+source;
     }
 }
