@@ -1,18 +1,18 @@
 package com.xiyuan.apibackend.controller.admin;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xiyuan.apibackend.model.dto.user.UserAddRequest;
-import com.xiyuan.apibackend.model.dto.user.UserQueryRequest;
-import com.xiyuan.apibackend.model.dto.user.UserUpdateRequest;
 import com.xiyuan.apibackend.annotation.AuthCheck;
 import com.xiyuan.apibackend.common.BaseResponse;
 import com.xiyuan.apibackend.common.ErrorCode;
 import com.xiyuan.apibackend.common.ResultUtils;
 import com.xiyuan.apibackend.exception.BusinessException;
 import com.xiyuan.apibackend.exception.ThrowUtils;
-import com.xiyuan.apicommon.model.entity.User;
+import com.xiyuan.apibackend.model.dto.user.UserAddRequest;
+import com.xiyuan.apibackend.model.dto.user.UserQueryRequest;
+import com.xiyuan.apibackend.model.dto.user.UserUpdateRequest;
 import com.xiyuan.apibackend.model.enums.UserRoleEnum;
 import com.xiyuan.apibackend.service.UserService;
+import com.xiyuan.apicommon.model.entity.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 

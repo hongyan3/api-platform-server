@@ -3,10 +3,9 @@ package com.xiyuan.apiclientsdk.client;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
-import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
-import com.xiyuan.apiclientsdk.utils.SignatureUtils;
 import com.xiyuan.apiclientsdk.model.User;
+import com.xiyuan.apiclientsdk.utils.SignatureUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,31 +31,15 @@ public class ApiClient {
         headers.put("sign", SignatureUtils.generateSignature(headers.get("body"),SECRET_KEY));
         return headers;
     }
-    public String getNameByGet(String name) {
-        HashMap<String,Object> paramMap = new HashMap<>();
-        paramMap.put("name",name);
-        String result = HttpUtil.get("http://127.0.0.1:8081/api/name/",paramMap);
-        System.out.println(result);
-        return result;
-    }
-
-    public String getNameByPost(String name) {
-        HashMap<String,Object> paramMap = new HashMap<>();
-        paramMap.put("name",name);
-        String result = HttpUtil.post("http://127.0.0.1:8081/api/name/",paramMap);
-        System.out.println(result);
-        return result;
-    }
 
     public String getUserNameByPost(User user) {
         String json = JSONUtil.toJsonStr(user);
-        HttpResponse httpResponse = HttpRequest.post("http://127.0.0.1:8081/api/name/user")
+        HttpResponse httpResponse = HttpRequest.post("http://127.0.0.1:8082/api/name")
                 .body(json)
                 .addHeaders(getHeaderMap(json))
                 .execute();
         System.out.println(httpResponse.getStatus());
         String result = httpResponse.body();
-        System.out.println(result);
         return result;
     }
 }

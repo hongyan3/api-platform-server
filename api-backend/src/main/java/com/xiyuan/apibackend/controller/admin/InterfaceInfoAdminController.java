@@ -1,21 +1,22 @@
 package com.xiyuan.apibackend.controller.admin;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xiyuan.apibackend.model.dto.interfaceinfo.InterfaceInfoAddRequest;
-import com.xiyuan.apibackend.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
-import com.xiyuan.apibackend.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
 import com.xiyuan.apibackend.annotation.AuthCheck;
 import com.xiyuan.apibackend.common.BaseResponse;
 import com.xiyuan.apibackend.common.ErrorCode;
 import com.xiyuan.apibackend.common.ResultUtils;
 import com.xiyuan.apibackend.exception.BusinessException;
 import com.xiyuan.apibackend.exception.ThrowUtils;
-import com.xiyuan.apicommon.model.entity.InterfaceInfo;
-import com.xiyuan.apicommon.model.entity.User;
+import com.xiyuan.apibackend.model.dto.interfaceinfo.InterfaceInfoAddRequest;
+import com.xiyuan.apibackend.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
+import com.xiyuan.apibackend.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
+import com.xiyuan.apibackend.model.enums.InterfaceInfoStatusEnum;
 import com.xiyuan.apibackend.model.enums.UserRoleEnum;
 import com.xiyuan.apibackend.model.vo.InterfaceInfoVO;
 import com.xiyuan.apibackend.service.InterfaceInfoService;
 import com.xiyuan.apibackend.service.UserService;
+import com.xiyuan.apicommon.model.entity.InterfaceInfo;
+import com.xiyuan.apicommon.model.entity.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -127,5 +128,48 @@ public class InterfaceInfoAdminController {
         Page<InterfaceInfo> interfaceInfoPage = interfaceInfoService.page(new Page<>(current, size),
                 interfaceInfoService.getQueryWrapper(interfaceInfoQueryRequest));
         return ResultUtils.success(interfaceInfoService.getInterfaceInfoVOPage(interfaceInfoPage));
+    }
+    /**
+     * 接口上线
+     *
+     * @param interfaceId
+     * @return
+     */
+    @PutMapping("/{interfaceId}/online")
+    @AuthCheck(AccessRole = UserRoleEnum.ADMIN)
+    public BaseResponse<Boolean> onlineInterfaceInfo(@PathVariable Long interfaceId) {
+        if (interfaceId == null || interfaceId <= 0) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        // 判断是否存在
+        InterfaceInfo oldInterfaceInfo = interfaceInfoService.getById(interfaceId);
+        ThrowUtils.throwIf(oldInterfaceInfo == null, ErrorCode.NOT_FOUND_ERROR);
+        InterfaceInfo interfaceInfo = new InterfaceInfo();
+        interfaceInfo.setId(interfaceId);
+        interfaceInfo.setStatus(InterfaceInfoStatusEnum.ONLINE.getValue());
+        // todo 判断接口是否可以跑通
+        boolean result = interfaceInfoService.updateById(interfaceInfo);
+        return ResultUtils.success(result);
+    }
+    /**
+     * 接口下线
+     *
+     * @param interfaceId
+     * @return
+     */
+    @PutMapping("/{interfaceId}/offline")
+    @AuthCheck(AccessRole = UserRoleEnum.ADMIN)
+    public BaseResponse<Boolean> offlineInterfaceInfo(@PathVariable Long interfaceId) {
+        if (interfaceId == null || interfaceId <= 0) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        // 判断是否存在
+        InterfaceInfo oldInterfaceInfo = interfaceInfoService.getById(interfaceId);
+        ThrowUtils.throwIf(oldInterfaceInfo == null, ErrorCode.NOT_FOUND_ERROR);
+        InterfaceInfo interfaceInfo = new InterfaceInfo();
+        interfaceInfo.setId(interfaceId);
+        interfaceInfo.setStatus(InterfaceInfoStatusEnum.OFFLINE.getValue());
+        boolean result = interfaceInfoService.updateById(interfaceInfo);
+        return ResultUtils.success(result);
     }
 }
