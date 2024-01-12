@@ -9,6 +9,7 @@
           <option value="timestamp" />
           <option value="sign" />
           <option value="body" />
+          <option value="access_key" />
         </set>
       </option>
     </inspection_tool>

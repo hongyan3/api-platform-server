@@ -2,7 +2,10 @@ server:
   port: 8081
   servlet:
     context-path: /api
-api:
-  client:
-    access-key: 267cc5dd83ce69498b24b47769bea8a768e7deb0f5ac6112e9a3464d6f1a29f1
-    secret-key: c19a55457eaf5a9f1248ff277fd884f21cd20636234392a487109ba1c3facd22
+spring:
+  application:
+    name: api-interface
+  cloud:
+    nacos:
+      discovery:
+        server-addr: xiyuan.link:8848
