@@ -21,7 +21,7 @@ spring:
     database: 0
     host: xiyuan.link
     port: 6379
-    timeout: 5000
+    timeout: 10000
     password: Sql123..
   session:
     # todo 取消注释开启分布式 session（须先配置 Redis）
