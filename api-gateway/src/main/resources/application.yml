@@ -14,8 +14,6 @@ spring:
     port: 6379
     database: 0
 dubbo:
-  scan:
-    base-packages: com.xiyuan.apicommon
   registry:
     address: nacos://xiyuan.link:8848
 

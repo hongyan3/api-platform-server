@@ -1,4 +1,4 @@
-package com.xiyuan.apicore.provider;
+package com.xiyuan.apicore.service.inner;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.xiyuan.apicore.common.ErrorCode;

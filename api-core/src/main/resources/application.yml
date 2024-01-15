@@ -45,6 +45,8 @@ dubbo:
   protocol:
     port: -1
     name: dubbo
+  scan:
+    base-packages: com.xiyuan.apicore.service.inner
   registry:
     address: nacos://xiyuan.link:8848
 mybatis-plus:

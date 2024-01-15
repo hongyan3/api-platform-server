@@ -1,4 +1,4 @@
-package com.xiyuan.apicore.provider;
+package com.xiyuan.apicore.service.inner;
 
 import com.xiyuan.apicore.service.UserService;
 import com.xiyuan.apicommon.model.entity.User;
