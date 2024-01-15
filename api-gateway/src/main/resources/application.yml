@@ -3,15 +3,16 @@ server:
 spring:
   application:
     name: api-gateway
+  cloud:
+    # nacos注册中心配置信息
+    nacos:
+      discovery:
+        server-addr: xiyuan.link:8848
   redis:
     host: xiyuan.link
     password: Sql123..
     port: 6379
     database: 0
-  cloud:
-    nacos:
-      discovery:
-        server-addr: xiyuan.link:8848
 dubbo:
   scan:
     base-packages: com.xiyuan.apicommon

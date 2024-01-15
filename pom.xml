@@ -10,7 +10,7 @@
     <version>1.0.0</version>
 
     <modules>
-        <module>api-backend</module>
+        <module>api-core</module>
         <module>api-interface</module>
         <module>api-client-sdk</module>
         <module>api-gateway</module>
@@ -29,7 +29,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2021.0.5</version>
+                <version>2021.0.7</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
