@@ -23,7 +23,7 @@ public class GatewayRouteConfig {
                                 .rewritePath("/api_interface/(?<segment>.*)","/$\\{segment}")
                                 .filter(filter)
                         )
-                        .uri("http://127.0.0.1:8081")
+                        .uri("lb://api-interface")
                 )
                 .build();
     }
