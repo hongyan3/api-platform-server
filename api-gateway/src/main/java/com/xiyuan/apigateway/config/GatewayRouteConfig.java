@@ -17,11 +17,13 @@ public class GatewayRouteConfig {
     @Bean
     public RouteLocator invokeInterface(RouteLocatorBuilder builder,InterfaceInvokeFilter filter) {
         return builder.routes()
-                .route(r -> r.path("/api/**")
+                .route(r -> r.path("/api_interface/**")
                         .filters(f -> f.addRequestHeader("resource","gateway")
+                                //重写请求路径
+                                .rewritePath("/api_interface/(?<segment>.*)","/$\\{segment}")
                                 .filter(filter)
                         )
-                        .uri("lb://api-interface")
+                        .uri("http://127.0.0.1:8081")
                 )
                 .build();
     }
