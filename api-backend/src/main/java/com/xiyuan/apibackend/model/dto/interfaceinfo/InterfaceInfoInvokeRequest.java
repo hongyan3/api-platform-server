@@ -24,6 +24,11 @@ public class InterfaceInfoInvokeRequest implements Serializable {
      */
     private String requestParams;
 
+    /**
+     * 请求头
+     */
+    private String requestHeader;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

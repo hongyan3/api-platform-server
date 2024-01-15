@@ -44,5 +44,4 @@ public interface InterfaceInfoService extends IService<InterfaceInfo> {
      * @return
      */
     InterfaceInfoVO getInterfaceInfoVO(InterfaceInfo interfaceInfo);
-
 }
