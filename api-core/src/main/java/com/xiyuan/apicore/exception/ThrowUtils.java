@@ -1,6 +1,7 @@
 package com.xiyuan.apicore.exception;
 
-import com.xiyuan.apicore.common.ErrorCode;
+import com.xiyuan.apicommon.exception.BusinessException;
+import com.xiyuan.apicommon.model.enums.ErrorCode;
 
 /**
  * 抛异常工具类

@@ -25,6 +25,13 @@ public class GatewayRouteConfig {
                         )
                         .uri("lb://api-interface")
                 )
+                .route(r -> r.path("/api_core/**")
+                        .filters(f ->
+                                //重写请求路径
+                                f.rewritePath("/api_core/(?<segment>.*)","/$\\{segment}")
+                        )
+                        .uri("lb://api-core")
+                )
                 .build();
     }
 }

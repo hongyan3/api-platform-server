@@ -1,22 +1,31 @@
 server:
-  port: 8082
+  port: 8090
 spring:
   application:
     name: api-gateway
   cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]': # 匹配所有路径
+            allowedOrigins: "http://127.0.0.1:8000" # 允许指定的源
+            allowedMethods: "*" # 允许所有的HTTP方法
+            allowedHeaders: "*" # 允许所有的请求头
+            allowCredentials: true # 允许带有凭据的请求（例如cookie）
+            maxAge: 3600 # 预检请求缓存时间（单位秒）
     # nacos注册中心配置信息
     nacos:
       discovery:
-        server-addr: xiyuan.link:8848
+        server-addr: zeekr.live:8848
+        namespace: 531135f1-4e25-4e41-b4b5-722580517de7
   redis:
-    host: xiyuan.link
+    host: zeekr.live
     password: Sql123..
     port: 6379
     database: 0
 dubbo:
   registry:
-    address: nacos://xiyuan.link:8848
-
+    address: nacos://zeekr.live:8848?namespace=82276f3c-2891-4bda-a624-de0bc7b7ba95
 logging:
   level:
     org.springframework.cloud.gateway: trace

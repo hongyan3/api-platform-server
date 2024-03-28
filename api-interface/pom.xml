@@ -56,6 +56,10 @@
             <groupId>com.xiyuan</groupId>
             <artifactId>api-client-sdk</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.xiyuan</groupId>
+            <artifactId>api-common</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>

@@ -1,8 +1,8 @@
 package com.xiyuan.apicore.service.inner;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.xiyuan.apicore.common.ErrorCode;
-import com.xiyuan.apicore.exception.BusinessException;
+import com.xiyuan.apicommon.model.enums.ErrorCode;
+import com.xiyuan.apicommon.exception.BusinessException;
 import com.xiyuan.apicore.mapper.InterfaceInfoMapper;
 import com.xiyuan.apicore.mapper.UserMapper;
 import com.xiyuan.apicommon.model.entity.InterfaceInfo;

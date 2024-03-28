@@ -1,11 +1,11 @@
 package com.xiyuan.apicore.controller;
 
 import cn.hutool.core.io.FileUtil;
-import com.xiyuan.apicore.common.BaseResponse;
-import com.xiyuan.apicore.common.ErrorCode;
-import com.xiyuan.apicore.common.ResultUtils;
+import com.xiyuan.apicommon.common.BaseResponse;
+import com.xiyuan.apicommon.model.enums.ErrorCode;
+import com.xiyuan.apicommon.common.ResultUtils;
 import com.xiyuan.apicore.constant.FileConstant;
-import com.xiyuan.apicore.exception.BusinessException;
+import com.xiyuan.apicommon.exception.BusinessException;
 import com.xiyuan.apicore.model.enums.FileUploadBusinessEnum;
 import com.xiyuan.apicore.service.FileUploadService;
 import com.xiyuan.apicore.service.UserService;

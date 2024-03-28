@@ -48,11 +48,6 @@ public class InterfaceInfo implements Serializable {
     private String requestHeader;
 
     /**
-     * 响应头
-     */
-    private String responseHeader;
-
-    /**
      * 状态 0-关闭 1-开启
      */
     private Integer status;

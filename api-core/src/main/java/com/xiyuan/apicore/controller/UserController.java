@@ -1,10 +1,10 @@
 package com.xiyuan.apicore.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xiyuan.apicore.common.BaseResponse;
-import com.xiyuan.apicore.common.ErrorCode;
-import com.xiyuan.apicore.common.ResultUtils;
-import com.xiyuan.apicore.exception.BusinessException;
+import com.xiyuan.apicommon.common.BaseResponse;
+import com.xiyuan.apicommon.model.enums.ErrorCode;
+import com.xiyuan.apicommon.common.ResultUtils;
+import com.xiyuan.apicommon.exception.BusinessException;
 import com.xiyuan.apicore.exception.ThrowUtils;
 import com.xiyuan.apicore.model.dto.user.UserEditRequest;
 import com.xiyuan.apicore.model.dto.user.UserLoginRequest;

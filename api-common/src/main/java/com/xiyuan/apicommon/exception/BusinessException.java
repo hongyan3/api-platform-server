@@ -1,5 +1,5 @@
-package com.xiyuan.apicore.exception;
-import com.xiyuan.apicore.common.ErrorCode;
+package com.xiyuan.apicommon.exception;
+import com.xiyuan.apicommon.model.enums.ErrorCode;
 import lombok.Getter;
 
 @Getter

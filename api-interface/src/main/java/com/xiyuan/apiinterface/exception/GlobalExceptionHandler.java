@@ -1,9 +1,9 @@
-package com.xiyuan.apicore.exception;
+package com.xiyuan.apiinterface.exception;
 
-import com.xiyuan.apicommon.exception.BusinessException;
 import com.xiyuan.apicommon.common.BaseResponse;
-import com.xiyuan.apicommon.model.enums.ErrorCode;
 import com.xiyuan.apicommon.common.ResultUtils;
+import com.xiyuan.apicommon.exception.BusinessException;
+import com.xiyuan.apicommon.model.enums.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

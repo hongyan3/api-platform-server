@@ -1,8 +1,8 @@
 package com.xiyuan.apicore.service.impl;
 
-import com.xiyuan.apicore.common.ErrorCode;
+import com.xiyuan.apicommon.model.enums.ErrorCode;
 import com.xiyuan.apicore.constant.FileConstant;
-import com.xiyuan.apicore.exception.BusinessException;
+import com.xiyuan.apicommon.exception.BusinessException;
 import com.xiyuan.apicore.service.FileUploadService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.xiyuan.apicore.common;
+package com.xiyuan.apicommon.model.enums;
 
 import lombok.Getter;
 

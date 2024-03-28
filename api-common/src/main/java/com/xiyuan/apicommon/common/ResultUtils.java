@@ -1,4 +1,6 @@
-package com.xiyuan.apicore.common;
+package com.xiyuan.apicommon.common;
+
+import com.xiyuan.apicommon.model.enums.ErrorCode;
 
 /**
  * 返回工具类

@@ -1,11 +1,12 @@
 server:
-  port: 8080
+  port: 8091
   servlet:
     context-path: /api
     # cookie 30 天过期
     session:
       cookie:
         max-age: 2592000
+        path: /
 spring:
   application:
     name: api-core
@@ -19,7 +20,7 @@ spring:
   # todo 需替换配置，然后取消注释
   redis:
     database: 0
-    host: xiyuan.link
+    host: zeekr.live
     port: 6379
     timeout: 10000
     password: Sql123..
@@ -40,7 +41,8 @@ spring:
     # nacos注册中心配置
     nacos:
       discovery:
-        server-addr: xiyuan.link:8848
+        server-addr: zeekr.live:8848
+        namespace: 531135f1-4e25-4e41-b4b5-722580517de7
 dubbo:
   protocol:
     port: -1
@@ -48,7 +50,9 @@ dubbo:
   scan:
     base-packages: com.xiyuan.apicore.service.inner
   registry:
-    address: nacos://xiyuan.link:8848
+    address: nacos://zeekr.live:8848?namespace=82276f3c-2891-4bda-a624-de0bc7b7ba95
+    parameters:
+      register-consumer-url: true
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

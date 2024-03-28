@@ -1,5 +1,6 @@
-package com.xiyuan.apicore.common;
+package com.xiyuan.apicommon.common;
 
+import com.xiyuan.apicommon.model.enums.ErrorCode;
 import lombok.Data;
 
 import java.io.Serializable;

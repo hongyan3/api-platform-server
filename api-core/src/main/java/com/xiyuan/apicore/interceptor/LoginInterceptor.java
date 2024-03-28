@@ -1,8 +1,8 @@
 package com.xiyuan.apicore.interceptor;
 
-import com.xiyuan.apicore.common.ErrorCode;
+import com.xiyuan.apicommon.model.enums.ErrorCode;
 import com.xiyuan.apicore.constant.UserConstant;
-import com.xiyuan.apicore.exception.BusinessException;
+import com.xiyuan.apicommon.exception.BusinessException;
 import com.xiyuan.apicommon.model.entity.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 
