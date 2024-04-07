@@ -2,6 +2,7 @@ package com.xiyuan.apicore.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.dubbo.rpc.RpcContext;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -18,10 +19,11 @@ import java.util.UUID;
 @Component
 @Slf4j
 public class RequestInterceptor {
+    private static final String TRACE_ID="traceId";
     /**
      * 执行拦截
      */
-    @Around("execution(* com.xiyuan.project.controller.*.*(..))")
+    @Around("execution(* com.xiyuan.apicore.controller.*.*(..))")
     public Object loginInterception(ProceedingJoinPoint point) throws Throwable {
         // 计时
         StopWatch stopWatch = new StopWatch();

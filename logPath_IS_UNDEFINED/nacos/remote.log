@@ -1,0 +1,143 @@
+2024-03-29 14:25:47.035 INFO [restartedMain:c.a.n.c.r.client] [RpcClientFactory] create a new rpc client of 2026b44f-6a3f-4bba-bce5-64709dda9db0_config-0
+2024-03-29 14:25:47.037 INFO [restartedMain:c.a.n.c.r.client] [2026b44f-6a3f-4bba-bce5-64709dda9db0_config-0] Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$665/1290345776
+2024-03-29 14:25:47.037 INFO [restartedMain:c.a.n.c.r.client] [2026b44f-6a3f-4bba-bce5-64709dda9db0_config-0] Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$666/871625569
+2024-03-29 14:25:47.037 INFO [restartedMain:c.a.n.c.r.client] [2026b44f-6a3f-4bba-bce5-64709dda9db0_config-0] Registry connection listener to current client:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$1
+2024-03-29 14:25:47.037 INFO [restartedMain:c.a.n.c.r.client] [2026b44f-6a3f-4bba-bce5-64709dda9db0_config-0] RpcClient init, ServerListFactory = com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$2
+2024-03-29 14:25:47.040 INFO [restartedMain:c.a.n.c.r.client] [2026b44f-6a3f-4bba-bce5-64709dda9db0_config-0] Try to connect to server on start up, server: {serverIp = 'zeekr.live', server main port = 8848}
+2024-03-29 14:25:47.041 INFO [restartedMain:c.a.n.c.r.c.g.GrpcClient] grpc client connection server:zeekr.live ip,serverPort:9848,grpcTslConfig:{"sslProvider":"OPENSSL","enableTls":false,"mutualAuthEnable":false,"trustAll":false}
+2024-03-29 14:25:50.049 ERROR [restartedMain:c.a.n.c.r.c.g.GrpcClient] Server check fail, please check server zeekr.live ,port 9848 is available , error ={}
+java.util.concurrent.TimeoutException: Waited 3000 milliseconds (plus 2 milliseconds, 471292 nanoseconds delay) for com.alibaba.nacos.shaded.io.grpc.stub.ClientCalls$GrpcFuture@bbe3918[status=PENDING, info=[GrpcFuture{clientCall=PendingCall{realCall=ClientCallImpl{method=MethodDescriptor{fullMethodName=Request/request, type=UNARY, idempotent=false, safe=false, sampledToLocalTracing=true, requestMarshaller=com.alibaba.nacos.shaded.io.grpc.protobuf.lite.ProtoLiteUtils$MessageMarshaller@78e12da, responseMarshaller=com.alibaba.nacos.shaded.io.grpc.protobuf.lite.ProtoLiteUtils$MessageMarshaller@1f5b8d5c, schemaDescriptor=com.alibaba.nacos.api.grpc.auto.RequestGrpc$RequestMethodDescriptorSupplier@51e89e92}}}}]]
+	at com.alibaba.nacos.shaded.com.google.common.util.concurrent.AbstractFuture.get(AbstractFuture.java:508) ~[nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.common.remote.client.grpc.GrpcClient.serverCheck(GrpcClient.java:218) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.common.remote.client.grpc.GrpcClient.connectToServer(GrpcClient.java:329) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.common.remote.client.RpcClient.start(RpcClient.java:363) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient.ensureRpcClient(ClientWorker.java:891) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient.getOneRunningClient(ClientWorker.java:1038) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient.isHealthServer(ClientWorker.java:1084) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.client.config.impl.ClientWorker.isHealthServer(ClientWorker.java:529) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.client.config.NacosConfigService.getServerStatus(NacosConfigService.java:244) [nacos-client-2.2.1.jar:na]
+	at org.apache.dubbo.configcenter.support.nacos.NacosDynamicConfiguration.buildConfigService(NacosDynamicConfiguration.java:111) [dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.configcenter.support.nacos.NacosDynamicConfiguration.<init>(NacosDynamicConfiguration.java:98) [dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.configcenter.support.nacos.NacosDynamicConfigurationFactory.createDynamicConfiguration(NacosDynamicConfigurationFactory.java:46) [dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.common.config.configcenter.AbstractDynamicConfigurationFactory.lambda$getDynamicConfiguration$0(AbstractDynamicConfigurationFactory.java:39) [dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.common.utils.ConcurrentHashMapUtils.computeIfAbsent(ConcurrentHashMapUtils.java:44) ~[dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.common.config.configcenter.AbstractDynamicConfigurationFactory.getDynamicConfiguration(AbstractDynamicConfigurationFactory.java:39) [dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.config.deploy.DefaultApplicationDeployer.getDynamicConfiguration(DefaultApplicationDeployer.java:887) ~[dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.config.deploy.DefaultApplicationDeployer.prepareEnvironment(DefaultApplicationDeployer.java:826) ~[dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.config.deploy.DefaultApplicationDeployer.startConfigCenter(DefaultApplicationDeployer.java:298) ~[dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.config.deploy.DefaultApplicationDeployer.initialize(DefaultApplicationDeployer.java:218) ~[dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.config.deploy.DefaultModuleDeployer.prepare(DefaultModuleDeployer.java:570) ~[dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.config.spring.context.DubboConfigApplicationListener.initDubboConfigBeans(DubboConfigApplicationListener.java:73) ~[dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.config.spring.context.DubboConfigApplicationListener.onApplicationEvent(DubboConfigApplicationListener.java:59) ~[dubbo-3.2.4.jar:3.2.4]
+	at org.apache.dubbo.config.spring.context.DubboConfigApplicationListener.onApplicationEvent(DubboConfigApplicationListener.java:37) ~[dubbo-3.2.4.jar:3.2.4]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.registerListeners(AbstractApplicationContext.java:881) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:580) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:64) ~[spring-boot-2.6.13.jar:2.6.13]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:745) ~[spring-boot-2.6.13.jar:2.6.13]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:420) ~[spring-boot-2.6.13.jar:2.6.13]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.6.13.jar:2.6.13]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1317) ~[spring-boot-2.6.13.jar:2.6.13]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-2.6.13.jar:2.6.13]
+	at com.xiyuan.apigateway.ApiGatewayApplication.main(ApiGatewayApplication.java:14) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_292]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_292]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_292]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_292]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.6.13.jar:2.6.13]
+2024-03-29 14:25:50.056 INFO [restartedMain:c.a.n.c.r.client] [2026b44f-6a3f-4bba-bce5-64709dda9db0_config-0] Try to connect to server on start up, server: {serverIp = 'zeekr.live', server main port = 8848}
+2024-03-29 14:25:50.056 INFO [restartedMain:c.a.n.c.r.c.g.GrpcClient] grpc client connection server:zeekr.live ip,serverPort:9848,grpcTslConfig:{"sslProvider":"OPENSSL","enableTls":false,"mutualAuthEnable":false,"trustAll":false}
+2024-03-29 14:25:52.777 INFO [restartedMain:c.a.n.c.r.client] [2026b44f-6a3f-4bba-bce5-64709dda9db0_config-0] Success to connect to server [zeekr.live:8848] on start up, connectionId = 1711693552361_212.192.12.93_35157
+2024-03-29 14:25:52.777 INFO [restartedMain:c.a.n.c.r.client] [2026b44f-6a3f-4bba-bce5-64709dda9db0_config-0] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
+2024-03-29 14:25:52.777 INFO [restartedMain:c.a.n.c.r.client] [2026b44f-6a3f-4bba-bce5-64709dda9db0_config-0] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$$Lambda$675/1178152304
+2024-03-29 14:25:52.782 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [2026b44f-6a3f-4bba-bce5-64709dda9db0_config-0] Notify connected event to listeners.
+2024-03-29 14:25:54.302 INFO [restartedMain:c.a.n.c.r.client] [RpcClientFactory] create a new rpc client of 0b1e7a0c-9b42-4105-a4f8-5bbff402844c_config-0
+2024-03-29 14:25:54.303 INFO [restartedMain:c.a.n.c.r.client] [0b1e7a0c-9b42-4105-a4f8-5bbff402844c_config-0] Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$665/1290345776
+2024-03-29 14:25:54.303 INFO [restartedMain:c.a.n.c.r.client] [0b1e7a0c-9b42-4105-a4f8-5bbff402844c_config-0] Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$666/871625569
+2024-03-29 14:25:54.303 INFO [restartedMain:c.a.n.c.r.client] [0b1e7a0c-9b42-4105-a4f8-5bbff402844c_config-0] Registry connection listener to current client:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$1
+2024-03-29 14:25:54.303 INFO [restartedMain:c.a.n.c.r.client] [0b1e7a0c-9b42-4105-a4f8-5bbff402844c_config-0] RpcClient init, ServerListFactory = com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$2
+2024-03-29 14:25:54.303 INFO [restartedMain:c.a.n.c.r.client] [0b1e7a0c-9b42-4105-a4f8-5bbff402844c_config-0] Try to connect to server on start up, server: {serverIp = 'zeekr.live', server main port = 8848}
+2024-03-29 14:25:54.303 INFO [restartedMain:c.a.n.c.r.c.g.GrpcClient] grpc client connection server:zeekr.live ip,serverPort:9848,grpcTslConfig:{"sslProvider":"OPENSSL","enableTls":false,"mutualAuthEnable":false,"trustAll":false}
+2024-03-29 14:25:56.843 INFO [restartedMain:c.a.n.c.r.client] [0b1e7a0c-9b42-4105-a4f8-5bbff402844c_config-0] Success to connect to server [zeekr.live:8848] on start up, connectionId = 1711693555543_212.192.12.93_45891
+2024-03-29 14:25:56.844 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [0b1e7a0c-9b42-4105-a4f8-5bbff402844c_config-0] Notify connected event to listeners.
+2024-03-29 14:25:56.845 INFO [restartedMain:c.a.n.c.r.client] [0b1e7a0c-9b42-4105-a4f8-5bbff402844c_config-0] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
+2024-03-29 14:25:56.845 INFO [restartedMain:c.a.n.c.r.client] [0b1e7a0c-9b42-4105-a4f8-5bbff402844c_config-0] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$$Lambda$675/1178152304
+2024-03-29 14:25:58.996 INFO [restartedMain:c.a.n.c.r.client] [RpcClientFactory] create a new rpc client of de735ae6-ed9d-42a5-a1bd-4a60322fe739
+2024-03-29 14:25:58.997 INFO [restartedMain:c.a.n.c.r.client] [de735ae6-ed9d-42a5-a1bd-4a60322fe739] RpcClient init, ServerListFactory = com.alibaba.nacos.client.naming.core.ServerListManager
+2024-03-29 14:25:58.997 INFO [restartedMain:c.a.n.c.r.client] [de735ae6-ed9d-42a5-a1bd-4a60322fe739] Registry connection listener to current client:com.alibaba.nacos.client.naming.remote.gprc.redo.NamingGrpcRedoService
+2024-03-29 14:25:58.998 INFO [restartedMain:c.a.n.c.r.client] [de735ae6-ed9d-42a5-a1bd-4a60322fe739] Register server push request handler:com.alibaba.nacos.client.naming.remote.gprc.NamingPushRequestHandler
+2024-03-29 14:25:58.999 INFO [restartedMain:c.a.n.c.r.client] [de735ae6-ed9d-42a5-a1bd-4a60322fe739] Try to connect to server on start up, server: {serverIp = 'zeekr.live', server main port = 8848}
+2024-03-29 14:25:59.000 INFO [restartedMain:c.a.n.c.r.c.g.GrpcClient] grpc client connection server:zeekr.live ip,serverPort:9848,grpcTslConfig:{"sslProvider":"OPENSSL","enableTls":false,"mutualAuthEnable":false,"trustAll":false}
+2024-03-29 14:26:01.398 INFO [restartedMain:c.a.n.c.r.client] [de735ae6-ed9d-42a5-a1bd-4a60322fe739] Success to connect to server [zeekr.live:8848] on start up, connectionId = 1711693560141_212.192.12.93_40709
+2024-03-29 14:26:01.400 INFO [restartedMain:c.a.n.c.r.client] [de735ae6-ed9d-42a5-a1bd-4a60322fe739] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
+2024-03-29 14:26:01.400 INFO [restartedMain:c.a.n.c.r.client] [de735ae6-ed9d-42a5-a1bd-4a60322fe739] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$$Lambda$675/1178152304
+2024-03-29 14:26:01.410 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [de735ae6-ed9d-42a5-a1bd-4a60322fe739] Notify connected event to listeners.
+2024-03-29 14:26:02.153 ERROR [restartedMain:c.a.n.c.r.client] Connection is unregistered, switch server, connectionId = 1711693560141_212.192.12.93_40709, request = SubscribeServiceRequest
+2024-03-29 14:26:02.153 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [de735ae6-ed9d-42a5-a1bd-4a60322fe739] Try to reconnect to a new server, server is  not appointed, will choose a random server.
+2024-03-29 14:26:02.154 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.c.g.GrpcClient] grpc client connection server:zeekr.live ip,serverPort:9848,grpcTslConfig:{"sslProvider":"OPENSSL","enableTls":false,"mutualAuthEnable":false,"trustAll":false}
+2024-03-29 14:26:02.257 ERROR [restartedMain:c.a.n.c.r.client] Send request fail, request = SubscribeServiceRequest{headers={app=unknown}, requestId='null'}, retryTimes = 0, errorMessage = Connection is unregistered.
+2024-03-29 14:26:02.363 ERROR [restartedMain:c.a.n.c.r.client] Send request fail, request = SubscribeServiceRequest{headers={app=unknown}, requestId='null'}, retryTimes = 1, errorMessage = Client not connected, current status:UNHEALTHY
+2024-03-29 14:26:02.466 ERROR [restartedMain:c.a.n.c.r.client] Send request fail, request = SubscribeServiceRequest{headers={app=unknown}, requestId='null'}, retryTimes = 2, errorMessage = Client not connected, current status:UNHEALTHY
+2024-03-29 14:26:02.614 ERROR [restartedMain:c.a.n.c.r.client] Send request fail, request = InstanceRequest{headers={app=unknown}, requestId='null'}, retryTimes = 0, errorMessage = Client not connected, current status:UNHEALTHY
+2024-03-29 14:26:02.719 ERROR [restartedMain:c.a.n.c.r.client] Send request fail, request = InstanceRequest{headers={app=unknown}, requestId='null'}, retryTimes = 1, errorMessage = Client not connected, current status:UNHEALTHY
+2024-03-29 14:26:02.824 ERROR [restartedMain:c.a.n.c.r.client] Send request fail, request = InstanceRequest{headers={app=unknown}, requestId='null'}, retryTimes = 2, errorMessage = Client not connected, current status:UNHEALTHY
+2024-03-29 14:26:03.161 INFO [restartedMain:c.a.n.c.r.client] Shutdown rpc client, set status to shutdown
+2024-03-29 14:26:03.162 INFO [restartedMain:c.a.n.c.r.client] Shutdown client event executor java.util.concurrent.ScheduledThreadPoolExecutor@5bb21973[Running, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
+2024-03-29 14:26:03.162 INFO [restartedMain:c.a.n.c.r.client] Close current connection 1711693560141_212.192.12.93_40709
+2024-03-29 14:26:03.172 INFO [restartedMain:c.a.n.c.r.c.g.GrpcClient] Shutdown grpc executor java.util.concurrent.ThreadPoolExecutor@2d085623[Running, pool size = 11, active threads = 1, queued tasks = 0, completed tasks = 10]
+2024-03-29 14:26:03.174 ERROR [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.c.g.GrpcClient] Server check fail, please check server zeekr.live ,port 9848 is available , error ={}
+java.lang.InterruptedException: null
+	at com.alibaba.nacos.shaded.com.google.common.util.concurrent.AbstractFuture.get(AbstractFuture.java:438) ~[nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.common.remote.client.grpc.GrpcClient.serverCheck(GrpcClient.java:218) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.common.remote.client.grpc.GrpcClient.connectToServer(GrpcClient.java:329) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.common.remote.client.RpcClient.reconnect(RpcClient.java:502) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.common.remote.client.RpcClient.lambda$start$2(RpcClient.java:343) [nacos-client-2.2.1.jar:na]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[na:1.8.0_292]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_292]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) ~[na:1.8.0_292]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) ~[na:1.8.0_292]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[na:1.8.0_292]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[na:1.8.0_292]
+	at java.lang.Thread.run(Thread.java:748) ~[na:1.8.0_292]
+2024-03-29 14:26:03.174 WARN [nacos-grpc-client-executor-zeekr.live-10:c.a.n.c.r.c.g.GrpcClient] [1711693560141_212.192.12.93_40709]Ignore error event,isRunning:false,isAbandon=false
+2024-03-29 14:26:03.178 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] Close current connection 1711693560141_212.192.12.93_40709
+2024-03-29 14:26:03.213 INFO [restartedMain:c.a.n.c.r.client] [RpcClientFactory] create a new rpc client of 52efb727-1764-4109-9fdf-566210e749e6
+2024-03-29 14:26:03.215 INFO [restartedMain:c.a.n.c.r.client] [52efb727-1764-4109-9fdf-566210e749e6] RpcClient init, ServerListFactory = com.alibaba.nacos.client.naming.core.ServerListManager
+2024-03-29 14:26:03.215 INFO [restartedMain:c.a.n.c.r.client] [52efb727-1764-4109-9fdf-566210e749e6] Registry connection listener to current client:com.alibaba.nacos.client.naming.remote.gprc.redo.NamingGrpcRedoService
+2024-03-29 14:26:03.215 INFO [restartedMain:c.a.n.c.r.client] [52efb727-1764-4109-9fdf-566210e749e6] Register server push request handler:com.alibaba.nacos.client.naming.remote.gprc.NamingPushRequestHandler
+2024-03-29 14:26:03.216 INFO [restartedMain:c.a.n.c.r.client] [52efb727-1764-4109-9fdf-566210e749e6] Try to connect to server on start up, server: {serverIp = 'zeekr.live', server main port = 8848}
+2024-03-29 14:26:03.217 INFO [restartedMain:c.a.n.c.r.c.g.GrpcClient] grpc client connection server:zeekr.live ip,serverPort:9848,grpcTslConfig:{"sslProvider":"OPENSSL","enableTls":false,"mutualAuthEnable":false,"trustAll":false}
+2024-03-29 14:26:03.291 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [de735ae6-ed9d-42a5-a1bd-4a60322fe739] Client is shutdown, stop reconnect to server
+2024-03-29 14:26:05.967 INFO [restartedMain:c.a.n.c.r.client] [52efb727-1764-4109-9fdf-566210e749e6] Success to connect to server [zeekr.live:8848] on start up, connectionId = 1711693564412_212.192.12.93_44641
+2024-03-29 14:26:05.968 INFO [restartedMain:c.a.n.c.r.client] [52efb727-1764-4109-9fdf-566210e749e6] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
+2024-03-29 14:26:05.968 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [52efb727-1764-4109-9fdf-566210e749e6] Notify connected event to listeners.
+2024-03-29 14:26:05.969 INFO [restartedMain:c.a.n.c.r.client] [52efb727-1764-4109-9fdf-566210e749e6] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$$Lambda$675/1178152304
+2024-03-29 14:29:13.412 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [ab2ba0e9-4577-44dc-8201-28f887c0f6ae_config-0] Server healthy check fail, currentConnection = 1711693184234_212.192.12.93_44475
+2024-03-29 14:29:13.414 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [ab2ba0e9-4577-44dc-8201-28f887c0f6ae_config-0] Try to reconnect to a new server, server is  not appointed, will choose a random server.
+2024-03-29 14:29:13.421 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.c.g.GrpcClient] grpc client connection server:zeekr.live ip,serverPort:9848,grpcTslConfig:{"sslProvider":"OPENSSL","enableTls":false,"mutualAuthEnable":false,"trustAll":false}
+2024-03-29 14:29:14.523 ERROR [com.alibaba.nacos.client.Worker:c.a.n.c.r.client] Send request fail, request = ConfigBatchListenRequest{headers={charset=UTF-8, Client-AppName=unknown, Client-RequestToken=573d0a2bf648fe7f6ceab6945044d224, Client-RequestTS=1711693751495, exConfigInfo=true}, requestId='null'}, retryTimes = 0, errorMessage = java.util.concurrent.TimeoutException: Waited 3000 milliseconds (plus 23 milliseconds, 32625 nanoseconds delay) for com.alibaba.nacos.shaded.io.grpc.stub.ClientCalls$GrpcFuture@5cdae780[status=PENDING, info=[GrpcFuture{clientCall=ClientCallImpl{method=MethodDescriptor{fullMethodName=Request/request, type=UNARY, idempotent=false, safe=false, sampledToLocalTracing=true, requestMarshaller=com.alibaba.nacos.shaded.io.grpc.protobuf.lite.ProtoLiteUtils$MessageMarshaller@78e12da, responseMarshaller=com.alibaba.nacos.shaded.io.grpc.protobuf.lite.ProtoLiteUtils$MessageMarshaller@1f5b8d5c, schemaDescriptor=com.alibaba.nacos.api.grpc.auto.RequestGrpc$RequestMethodDescriptorSupplier@51e89e92}}}]]
+2024-03-29 14:29:15.965 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [bf5ffd2d-d7e2-467a-85d8-7a235c1cbf3f_config-0] Server check success, currentServer is zeekr.live:8848 
+2024-03-29 14:29:16.449 ERROR [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.c.g.GrpcClient] Server check fail, please check server zeekr.live ,port 9848 is available , error ={}
+java.util.concurrent.TimeoutException: Waited 3000 milliseconds (plus 2 milliseconds, 813417 nanoseconds delay) for com.alibaba.nacos.shaded.io.grpc.stub.ClientCalls$GrpcFuture@10a2a979[status=PENDING, info=[GrpcFuture{clientCall=PendingCall{realCall=ClientCallImpl{method=MethodDescriptor{fullMethodName=Request/request, type=UNARY, idempotent=false, safe=false, sampledToLocalTracing=true, requestMarshaller=com.alibaba.nacos.shaded.io.grpc.protobuf.lite.ProtoLiteUtils$MessageMarshaller@78e12da, responseMarshaller=com.alibaba.nacos.shaded.io.grpc.protobuf.lite.ProtoLiteUtils$MessageMarshaller@1f5b8d5c, schemaDescriptor=com.alibaba.nacos.api.grpc.auto.RequestGrpc$RequestMethodDescriptorSupplier@51e89e92}}}}]]
+	at com.alibaba.nacos.shaded.com.google.common.util.concurrent.AbstractFuture.get(AbstractFuture.java:508) ~[nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.common.remote.client.grpc.GrpcClient.serverCheck(GrpcClient.java:218) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.common.remote.client.grpc.GrpcClient.connectToServer(GrpcClient.java:329) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.common.remote.client.RpcClient.reconnect(RpcClient.java:502) [nacos-client-2.2.1.jar:na]
+	at com.alibaba.nacos.common.remote.client.RpcClient.lambda$start$2(RpcClient.java:343) [nacos-client-2.2.1.jar:na]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[na:1.8.0_292]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_292]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) ~[na:1.8.0_292]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) ~[na:1.8.0_292]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[na:1.8.0_292]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[na:1.8.0_292]
+	at java.lang.Thread.run(Thread.java:748) ~[na:1.8.0_292]
+2024-03-29 14:29:16.565 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.c.g.GrpcClient] grpc client connection server:zeekr.live ip,serverPort:9848,grpcTslConfig:{"sslProvider":"OPENSSL","enableTls":false,"mutualAuthEnable":false,"trustAll":false}
+2024-03-29 14:29:19.564 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [ab2ba0e9-4577-44dc-8201-28f887c0f6ae_config-0] Success to connect a server [zeekr.live:8848], connectionId = 1711693758653_212.192.12.93_41231
+2024-03-29 14:29:19.564 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [ab2ba0e9-4577-44dc-8201-28f887c0f6ae_config-0] Abandon prev connection, server is zeekr.live:8848, connectionId is 1711693184234_212.192.12.93_44475
+2024-03-29 14:29:19.565 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] Close current connection 1711693184234_212.192.12.93_44475
+2024-03-29 14:29:19.566 WARN [nacos-grpc-client-executor-zeekr.live-184:c.a.n.c.r.c.g.GrpcClient] [1711693184234_212.192.12.93_44475]Ignore error event,isRunning:false,isAbandon=true
+2024-03-29 14:29:19.566 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [ab2ba0e9-4577-44dc-8201-28f887c0f6ae_config-0] Notify disconnected event to listeners
+2024-03-29 14:29:19.566 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.r.client] [ab2ba0e9-4577-44dc-8201-28f887c0f6ae_config-0] Notify connected event to listeners.

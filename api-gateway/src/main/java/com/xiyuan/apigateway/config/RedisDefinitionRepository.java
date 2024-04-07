@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static com.xiyuan.apigateway.constant.CommonConstant.GATEWAY_DYNAMIC_ROUTES;
+
 /**
  * @author xiyuan
  * @description 路由存储持久化到Redis
@@ -23,8 +25,6 @@ import java.util.stream.Collectors;
  */
 @Component
 public class RedisDefinitionRepository implements RouteDefinitionRepository {
-    // hash存储的key
-    public static final String GATEWAY_DYNAMIC_ROUTES = "api:gateway:dynamic_routes";
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 

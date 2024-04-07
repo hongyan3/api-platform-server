@@ -1,5 +1,7 @@
 package com.xiyuan.apigateway.service;
 
+import com.xiyuan.apicommon.exception.BusinessException;
+import com.xiyuan.apicommon.model.enums.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.event.RefreshRoutesEvent;
 import org.springframework.cloud.gateway.route.RouteDefinition;
@@ -43,41 +45,38 @@ public class DynamicRouteService implements ApplicationEventPublisherAware {
     /**
      * 增加路由
      */
-    public String add(RouteDefinition definition) {
+    public boolean add(RouteDefinition definition) {
         try {
             routeDefinitionWriter.save(Mono.just(definition)).subscribe();
             notifyChanged();
-            return "success";
+            return true;
         } catch (Exception e) {
             log.error("Add Route Failed：{}", e.toString());
-            return "Add Route Failed：" + e;
+            throw new BusinessException(ErrorCode.OPERATION_ERROR,"路由添加失败："+e.getMessage());
         }
     }
 
     /**
      * 更新路由
      */
-    public String update(RouteDefinition definition) {
+    public boolean update(RouteDefinition definition) {
         try {
             routeDefinitionWriter.delete(Mono.just(definition.getId())).subscribe();
-        } catch (Exception e) {
-            return "Update Route Failed,Not Fount Route: " + definition.getId();
-        }
-        try {
             routeDefinitionWriter.save(Mono.just(definition)).subscribe();
             notifyChanged();
-            return "success";
+            return true;
         } catch (Exception e) {
-            log.error("Add Route Failed：{}", e.toString());
-            return "Add Route Failed：" + e;
+            log.error("Update Route Failed：{}", e.toString());
+            throw new BusinessException(ErrorCode.OPERATION_ERROR,"路由修改失败："+e.getMessage());
         }
     }
-    public String delete(String id) {
+    public boolean delete(String id) {
         try {
             routeDefinitionWriter.delete(Mono.just(id)).subscribe();
-            return "success";
+            return true;
         } catch (Exception e) {
-            return "Delete Route Failed: " + id;
+            log.error("Delete Route Failed：{}", e.toString());
+            throw new BusinessException(ErrorCode.OPERATION_ERROR,"路由删除失败："+e.getMessage());
         }
     }
 }

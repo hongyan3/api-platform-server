@@ -1,6 +1,6 @@
 package com.xiyuan.apigateway.config;
 
-import com.xiyuan.apigateway.filter.InterfaceInvokeFilter;
+import com.xiyuan.apigateway.filter.BizServerFilter;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,7 @@ public class GatewayRouteConfig {
      * @return
      */
     @Bean
-    public RouteLocator invokeInterface(RouteLocatorBuilder builder,InterfaceInvokeFilter filter) {
+    public RouteLocator invokeInterface(RouteLocatorBuilder builder, BizServerFilter filter) {
         return builder.routes()
                 .route(r -> r.path("/api_interface/**")
                         .filters(f -> f.addRequestHeader("resource","gateway")
